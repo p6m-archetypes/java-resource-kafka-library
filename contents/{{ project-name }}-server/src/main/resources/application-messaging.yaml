@@ -1,0 +1,19 @@
+spring:
+  kafka:
+    bootstrap-servers: ${MESSAGING_BROKERS:localhost:9092}
+    properties:
+      sasl.mechanism: ${MESSAGING_SASL_MECHANISM:PLAIN}
+      sasl.jaas.config: >-
+        org.apache.kafka.common.security.plain.PlainLoginModule required
+        username="${MESSAGING_USERNAME:}"
+        password="${MESSAGING_PASSWORD:}";
+      security.protocol: SASL_SSL
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      group-id: ${MESSAGING_TOPIC:{{ project-name }}}-consumers
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    topic:
+      name: ${MESSAGING_TOPIC:{{ project-name }}}
