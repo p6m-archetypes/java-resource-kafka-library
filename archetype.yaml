@@ -1,0 +1,15 @@
+---
+description: "Java Kafka Messaging — Spring Kafka configuration for Maven multi-module services"
+summary: >
+  Renders KafkaConfig.java into the server module's messaging package.
+  Consumed as a library by Java service archetypes.
+  Requires spring-kafka in the server module's pom.xml.
+authors: ["Jimmie Fulton <jimmie@ybor.ai>"]
+tags: ["library", "java", "messaging", "kafka", "spring-kafka"]
+
+requires:
+  archetect: "3.0.0"
+
+templating:
+  trim_blocks: true
+  lstrip_blocks: true
